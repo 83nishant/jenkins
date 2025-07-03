@@ -61,6 +61,5 @@ pipeline{
                 subject: 'Build Failed for Demo CICD App'
             }
         }
-    }
-}*/
-    
+    } */
+}
