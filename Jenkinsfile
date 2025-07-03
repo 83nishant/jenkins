@@ -7,7 +7,7 @@ pipeline{
         stage("Code Clone"){
             steps{
                script{
-                   clone("https://github.com/LondheShubham153/two-tier-flask-app.git", "master")
+                   clone("https://github.com/83nishant/jenkins.git", "main")
                }
             }
         }
@@ -33,7 +33,7 @@ pipeline{
         stage("Push to Docker Hub"){
             steps{
                 script{
-                    docker_push("dockerHubCreds","two-tier-flask-app")
+                    docker_push("dockerhubcreds","two-tier-flask-app")
                 }  
             }
         }
@@ -44,7 +44,7 @@ pipeline{
         }
     }
 
-post{
+/*post{
         success{
             script{
                 emailext from: 'mentor@trainwithshubham.com',
@@ -62,4 +62,5 @@ post{
             }
         }
     }
-}
+}*/
+    
