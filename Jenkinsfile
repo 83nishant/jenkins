@@ -10,7 +10,7 @@ pipeline{
         }
         stage("Build"){
             steps{
-                sh "docker build -t two-tier-flask-app-2 ."
+                sh "docker build -t two-tier-flask-app-3 ."
             }
             
         }
@@ -28,8 +28,8 @@ pipeline{
                     usernameVariable: "dockerhubuser"
                 )]){
                     sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}"
-                    sh "docker image tag two-tier-flask-app-2 ${env.dockerhubuser}/two-tier-flask-app-2"
-                    sh "docker push ${env.dockerhubuser}/two-tier-flask-app-2:latest"
+                    sh "docker image tag two-tier-flask-app-3 ${env.dockerhubuser}/two-tier-flask-app-3"
+                    sh "docker push ${env.dockerhubuser}/two-tier-flask-app-3:latest"
                 }
             }
         }
