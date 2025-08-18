@@ -10,13 +10,13 @@ pipeline{
         }
         stage("Build"){
             steps{
-                sh "docker build -t two-tier-flask-app-1 ."
+                sh "docker build -t two-tier-flask-app-2 ."
             }
             
         }
         stage("Test"){
             steps{
-                echo "Developer / Tester tests likh ke dega..."
+                echo "Developer / Tester..."
             }
             
         }
@@ -28,14 +28,14 @@ pipeline{
                     usernameVariable: "dockerhubuser"
                 )]){
                     sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}"
-                    sh "docker image tag two-tier-flask-app-1 ${env.dockerhubuser}/two-tier-flask-app-1"
-                    sh "docker push ${env.dockerhubuser}/two-tier-flask-app-1:latest"
+                    sh "docker image tag two-tier-flask-app-2 ${env.dockerhubuser}/two-tier-flask-app-2"
+                    sh "docker push ${env.dockerhubuser}/two-tier-flask-app-2:latest"
                 }
             }
         }
         stage("Deploy"){
             steps{
-                sh "docker-compose up -d --build flask-app-1"
+                sh "docker-compose up -d --build flask-app-2"
             }
         }
     }
